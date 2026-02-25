@@ -1,0 +1,12 @@
+<div class="pagination">
+    <span class="pagination__count">{{ filteredCount() }} Resultados</span>
+
+    <div class="pagination__size">
+        <select class="pagination__select" [value]="pageSize()" (change)="onPageSizeChange($event)"
+            aria-label="Registros por página">
+            @for (option of pageSizeOptions; track option) {
+            <option [value]="option">{{ option }}</option>
+            }
+        </select>
+    </div>
+</div>

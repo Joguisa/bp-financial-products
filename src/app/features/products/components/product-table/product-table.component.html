@@ -1,0 +1,52 @@
+<div class="table-scroll-wrapper">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nombre del producto</th>
+                <th>Descripción</th>
+                <th>Fecha de liberación</th>
+                <th>Fecha de reestructuración</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (product of products(); track product.id) {
+            <tr>
+                <td class="cell-logo">
+                    <img [src]="product.logo" [alt]="product.name" (error)="onImageError($event)" class="product-logo"
+                        loading="lazy">
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.date_release }}</td>
+                <td>{{ product.date_revision }}</td>
+                <td class="cell-actions">
+                    <div class="dropdown">
+                        <button class="dropdown__trigger" (click)="toggleMenu($event, product.id)"
+                            aria-label="Acciones">
+                            ⋮
+                        </button>
+                        @if (openMenuId() === product.id) {
+                        <div class="dropdown__menu">
+                            <button class="dropdown__item" (click)="onEdit($event, product)">
+                                Editar
+                            </button>
+                            <button class="dropdown__item dropdown__item--danger" (click)="onDelete($event, product)">
+                                Eliminar
+                            </button>
+                        </div>
+                        }
+                    </div>
+                </td>
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="6" class="cell-empty">
+                    No se encontraron productos
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

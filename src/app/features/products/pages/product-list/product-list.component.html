@@ -1,0 +1,22 @@
+<div class="list-header">
+    <bp-search-bar (search)="onSearch($event)"></bp-search-bar>
+    <button class="btn btn-primary" (click)="navigateToAdd()">Agregar</button>
+</div>
+
+<div class="list-container">
+    @if (loading() === 'loading') {
+    <bp-skeleton-table [rows]="5" [columns]="6"></bp-skeleton-table>
+    } @else {
+    <bp-product-table [products]="products()" (edit)="onEdit($event)" (delete)="onDelete($event)">
+    </bp-product-table>
+
+    <bp-pagination [filteredCount]="filteredCount()" [pageSize]="pageSize()"
+        (pageSizeChange)="onPageSizeChange($event)">
+    </bp-pagination>
+    }
+</div>
+
+<bp-modal [isOpen]="showDeleteModal()"
+    [title]="'¿Estás seguro de eliminar el producto ' + (productToDelete()?.name ?? '') + '?'" confirmText="Confirmar"
+    cancelText="Cancelar" (confirm)="confirmDelete()" (cancel)="closeDeleteModal()">
+</bp-modal>
