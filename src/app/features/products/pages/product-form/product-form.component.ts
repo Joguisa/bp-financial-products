@@ -40,7 +40,7 @@ export class ProductFormComponent {
   });
 
   readonly title = computed(() =>
-    this.isEditMode() ? 'Editar Producto' : 'Nuevo Producto'
+    this.isEditMode() ? 'Editar Producto' : 'Formulario de Registro'
   );
 
   constructor() {

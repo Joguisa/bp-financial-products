@@ -73,7 +73,7 @@ describe('ProductFormComponent', () => {
 
     it('debe detectar modo creación', () => {
       expect(component.isEditMode()).toBe(false);
-      expect(component.title()).toBe('Nuevo Producto');
+      expect(component.title()).toBe('Formulario de Registro');
     });
 
     it('debe tener producto null', () => {
