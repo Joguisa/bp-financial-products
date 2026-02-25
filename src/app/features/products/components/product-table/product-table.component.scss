@@ -36,11 +36,11 @@
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    background: var(--bg-main) url('/icons/visa-signature-400x225.webp') center / 70% no-repeat;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--bg-main);
+    border: 1px solid var(--border-color);
 }
 
 .product-logo {
