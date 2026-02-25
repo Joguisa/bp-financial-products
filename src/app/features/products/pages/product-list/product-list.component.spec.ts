@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { signal, WritableSignal } from '@angular/core';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { ProductListComponent } from './product-list.component';
 import { NotificationService } from '@core/services/notification.service';
 import { LoadingState, FinancialProduct } from '@features/products/models/product.model';
@@ -154,6 +154,27 @@ describe('ProductListComponent', () => {
 
       expect(component.showDeleteModal()).toBe(false);
       expect(component.productToDelete()).toBeNull();
+    });
+
+    it('no debe hacer nada si no hay producto seleccionado', () => {
+      fixture.detectChanges();
+
+      component.confirmDelete();
+
+      expect(storeMock.deleteProduct).not.toHaveBeenCalled();
+    });
+    it('debe cerrar modal si ocurre error al eliminar', () => {
+      (storeMock.deleteProduct as jest.Mock).mockReturnValue(
+        throwError(() => new Error('Error eliminando'))
+      );
+
+      fixture.detectChanges();
+
+      component.onDelete(mockProducts[0]);
+      component.confirmDelete();
+
+      expect(storeMock.deleteProduct).toHaveBeenCalledWith('prod-001');
+      expect(component.showDeleteModal()).toBe(false);
     });
   });
 });
