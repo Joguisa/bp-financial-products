@@ -1,0 +1,124 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="id">ID</label>
+
+            @let idCtrl = control('id');
+
+            <input id="id" formControlName="id" class="form-control"
+                [class.input-error]="idCtrl.invalid && (idCtrl.dirty || idCtrl.touched)"
+                placeholder="Ingrese el ID del producto" />
+
+            @if (idCtrl.hasError('required') && (idCtrl.dirty || idCtrl.touched)) {
+            <span class="error-text">ID es requerido</span>
+            }
+
+            @if (idCtrl.hasError('minLengthTrimmed') && (idCtrl.dirty || idCtrl.touched)) {
+            <span class="error-text">Mínimo 3 caracteres</span>
+            }
+
+            @if (idCtrl.hasError('maxLengthTrimmed') && (idCtrl.dirty || idCtrl.touched)) {
+            <span class="error-text">Máximo 10 caracteres</span>
+            }
+
+            @if (idCtrl.hasError('idExists') && (idCtrl.dirty || idCtrl.touched)) {
+            <span class="error-text">Este ID ya existe</span>
+            }
+
+            @if (idCtrl.pending) {
+            <span class="validating-text">Validando...</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="name">Nombre</label>
+
+            @let nameCtrl = control('name');
+
+            <input id="name" formControlName="name" class="form-control"
+                [class.input-error]="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)"
+                placeholder="Ingrese el nombre del producto" />
+
+            @if (nameCtrl.hasError('required') && (nameCtrl.dirty || nameCtrl.touched)) {
+            <span class="error-text">Nombre es requerido</span>
+            }
+
+            @if (nameCtrl.hasError('minLengthTrimmed') && (nameCtrl.dirty || nameCtrl.touched)) {
+            <span class="error-text">Mínimo 5 caracteres</span>
+            }
+
+            @if (nameCtrl.hasError('maxLengthTrimmed') && (nameCtrl.dirty || nameCtrl.touched)) {
+            <span class="error-text">Máximo 100 caracteres</span>
+            }
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="description">Descripción</label>
+
+            @let descCtrl = control('description');
+
+            <input id="description" formControlName="description" class="form-control"
+                [class.input-error]="descCtrl.invalid && (descCtrl.dirty || descCtrl.touched)"
+                placeholder="Ingrese la descripción del producto" />
+
+            @if (descCtrl.hasError('required') && (descCtrl.dirty || descCtrl.touched)) {
+            <span class="error-text">Descripción es requerida</span>
+            }
+
+            @if (descCtrl.hasError('minLengthTrimmed') && (descCtrl.dirty || descCtrl.touched)) {
+            <span class="error-text">Mínimo 10 caracteres</span>
+            }
+
+            @if (descCtrl.hasError('maxLengthTrimmed') && (descCtrl.dirty || descCtrl.touched)) {
+            <span class="error-text">Máximo 200 caracteres</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="logo">Logo</label>
+
+            @let logoCtrl = control('logo');
+
+            <input id="logo" formControlName="logo" class="form-control"
+                [class.input-error]="logoCtrl.invalid && (logoCtrl.dirty || logoCtrl.touched)"
+                placeholder="Ingrese la URL del logo" />
+
+            @if (logoCtrl.hasError('required') && (logoCtrl.dirty || logoCtrl.touched)) {
+            <span class="error-text">Logo es requerido</span>
+            }
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="date_release">Fecha de liberación</label>
+
+            @let releaseCtrl = control('date_release');
+
+            <input id="date_release" type="date" formControlName="date_release" class="form-control"
+                [class.input-error]="releaseCtrl.invalid && (releaseCtrl.dirty || releaseCtrl.touched)" />
+
+            @if (releaseCtrl.hasError('required') && (releaseCtrl.dirty || releaseCtrl.touched)) {
+            <span class="error-text">Fecha de liberación es requerida</span>
+            }
+
+            @if (releaseCtrl.hasError('dateInPast') && (releaseCtrl.dirty || releaseCtrl.touched)) {
+            <span class="error-text">La fecha debe ser igual o mayor a hoy</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="date_revision">Fecha de revisión</label>
+            <input id="date_revision" type="date" formControlName="date_revision" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reiniciar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid || form.pending">
+            Enviar
+        </button>
+    </div>
+</form>

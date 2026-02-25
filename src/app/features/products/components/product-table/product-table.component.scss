@@ -27,16 +27,26 @@
     }
 }
 
-.product-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: var(--bg-main);
+.cell-logo {
+  width: 60px;
 }
 
-.cell-logo {
-    width: 60px;
+.logo-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--bg-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--bg-main);
+}
+
+.product-logo {
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
 }
 
 .cell-actions {

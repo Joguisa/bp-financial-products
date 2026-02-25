@@ -14,8 +14,10 @@
             @for (product of products(); track product.id) {
             <tr>
                 <td class="cell-logo">
-                    <img [src]="product.logo" [alt]="product.name" (error)="onImageError($event)" class="product-logo"
-                        loading="lazy">
+                    <div class="logo-wrapper">
+                        <img [src]="product.logo" [alt]="product.name" (error)="onImageError($event)"
+                            class="product-logo" loading="lazy">
+                    </div>
                 </td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>

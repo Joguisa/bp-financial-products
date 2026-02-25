@@ -17,7 +17,7 @@ export class ProductTableComponent {
 
   openMenuId = signal<string | null>(null);
 
-  readonly defaultLogo = 'assets/icons/visa-signature-400x225.webp';
+  readonly defaultLogo = 'icons/visa-signature-400x225.webp';
 
   @HostListener('document:click')
   onDocumentClick(): void {

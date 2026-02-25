@@ -1,0 +1,23 @@
+.form-page {
+    &__header {
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark-accent);
+        margin: 0;
+    }
+
+    &__body {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        padding: 2rem;
+
+        @media (max-width: 575px) {
+            padding: 1.25rem;
+        }
+    }
+}

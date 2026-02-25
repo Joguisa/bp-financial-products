@@ -1,0 +1,10 @@
+<div class="form-page">
+    <div class="form-page__header">
+        <h2 class="form-page__title">{{ title() }}</h2>
+    </div>
+
+    <div class="form-page__body">
+        <bp-product-form-fields [isEditMode]="isEditMode()" [product]="product()" (formSubmit)="onFormSubmit($event)">
+        </bp-product-form-fields>
+    </div>
+</div>
