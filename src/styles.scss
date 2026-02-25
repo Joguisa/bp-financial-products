@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'assets/styles/variables';
+@use 'assets/styles/base';
+@use 'assets/styles/components';
+@use 'assets/styles/forms';
+@use 'assets/styles/responsive';
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 2rem;
+  }
+}

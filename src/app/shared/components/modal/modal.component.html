@@ -1,0 +1,11 @@
+@if (isOpen()) {
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+    <div class="modal-content" role="dialog" aria-modal="true">
+        <p class="modal-title">{{ title() }}</p>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ cancelText() }}</button>
+            <button type="button" class="btn btn-primary" (click)="onConfirm()">{{ confirmText() }}</button>
+        </div>
+    </div>
+</div>
+}

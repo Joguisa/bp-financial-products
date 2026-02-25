@@ -1,0 +1,54 @@
+.skeleton-table {
+    width: 100%;
+    min-width: 700px;
+}
+
+.skeleton-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--bg-main);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skeleton-cell {
+    flex: 1;
+    height: 1rem;
+    background-color: var(--border-color);
+    border-radius: var(--border-radius);
+    animation: shimmer 1.5s infinite;
+
+    &--header {
+        height: 0.875rem;
+    }
+
+    &--logo {
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

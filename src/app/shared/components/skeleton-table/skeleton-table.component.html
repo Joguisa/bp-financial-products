@@ -1,0 +1,14 @@
+<div class="skeleton-table">
+    <div class="skeleton-header">
+        @for (col of columnsArray(); track $index) {
+        <div class="skeleton-cell skeleton-cell--header"></div>
+        }
+    </div>
+    @for (row of rowsArray(); track $index) {
+    <div class="skeleton-row">
+        @for (col of columnsArray(); track $index) {
+        <div class="skeleton-cell" [class.skeleton-cell--logo]="$index === 0"></div>
+        }
+    </div>
+    }
+</div>
