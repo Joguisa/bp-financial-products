@@ -27,7 +27,7 @@ describe('PaginationComponent', () => {
     fixture.detectChanges();
 
     const count = fixture.nativeElement.querySelector('.pagination__count');
-    expect(count.textContent).toContain('8 Resultados');
+    expect(count.textContent).toContain('8 Registros');
   });
 
   it('debe renderizar las opciones de tamaño de página', () => {

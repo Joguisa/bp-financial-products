@@ -1,5 +1,5 @@
 <div class="pagination">
-    <span class="pagination__count">{{ filteredCount() }} Resultados</span>
+    <span class="pagination__count">{{ displayedCount }} de {{ filteredCount() }} Registros</span>
 
     <div class="pagination__size">
         <select class="pagination__select" [value]="pageSize()" (change)="onPageSizeChange($event)"

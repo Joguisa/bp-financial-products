@@ -2,11 +2,24 @@
     <table class="product-table">
         <thead>
             <tr>
-                <th>Logo</th>
-                <th>Nombre del producto</th>
-                <th>Descripción</th>
-                <th>Fecha de liberación</th>
-                <th>Fecha de reestructuración</th>
+                <th>
+                    Logo
+                </th>
+                <th>
+                    Nombre del producto
+                </th>
+                <th>
+                    Descripción
+                    <span class="info-icon" [title]="'Detalles y características del producto'">i</span>
+                </th>
+                <th>
+                    Fecha de liberación
+                    <span class="info-icon" [title]="'Fecha en que el producto fue lanzado'">i</span>
+                </th>
+                <th>
+                    Fecha de reestructuración
+                    <span class="info-icon" [title]="'Fecha de la última actualización o reestructuración'">i</span>
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -16,7 +29,7 @@
                 <td class="cell-logo">
                     <div class="logo-wrapper">
                         <img [src]="product.logo" [alt]="product.name" (error)="onImageError($event)"
-                            class="product-logo" loading="lazy">
+                            class="product-logo">
                     </div>
                 </td>
                 <td>{{ product.name }}</td>

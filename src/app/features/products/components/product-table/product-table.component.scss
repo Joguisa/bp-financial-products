@@ -28,25 +28,29 @@
 }
 
 .cell-logo {
-  width: 60px;
+    width: 60px;
 }
 
 .logo-wrapper {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: var(--bg-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--bg-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--bg-main) url('/icons/visa-signature-400x225.webp') center / 70% no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--bg-main);
 }
 
 .product-logo {
-  max-width: 70%;
-  max-height: 70%;
-  object-fit: contain;
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+
+    &[src=""] {
+        display: none;
+    }
 }
 
 .cell-actions {
@@ -60,6 +64,20 @@
     padding: 2rem !important;
     color: var(--text-secondary);
     font-style: italic;
+}
+
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--text-body);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 700;
 }
 
 .dropdown {

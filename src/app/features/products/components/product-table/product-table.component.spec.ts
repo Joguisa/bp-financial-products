@@ -136,4 +136,17 @@ describe('ProductTableComponent', () => {
 
     expect(img.src).toContain('visa-signature-400x225.webp');
   });
+
+  it('debe evitar loop infinito si el fallback también falla', () => {
+    componentRef.setInput('products', mockProducts);
+    fixture.detectChanges();
+
+    const img: HTMLImageElement = fixture.nativeElement.querySelector('.product-logo');
+
+    img.dispatchEvent(new Event('error'));
+    expect(img.src).toContain('visa-signature-400x225.webp');
+
+    img.dispatchEvent(new Event('error'));
+    expect(img.getAttribute('src')).toBeNull();
+  });
 });

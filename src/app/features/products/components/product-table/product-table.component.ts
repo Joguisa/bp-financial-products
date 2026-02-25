@@ -45,6 +45,6 @@ export class ProductTableComponent {
 
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
-    img.src = this.defaultLogo;
+    img.src = '';
   }
 }

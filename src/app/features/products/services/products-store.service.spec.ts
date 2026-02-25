@@ -125,6 +125,26 @@ describe('ProductsStore', () => {
       expect(store.products().length).toBe(4);
       expect(store.products()[3].id).toBe('prod-004');
     });
+
+    it('no debe modificar la lista si create falla', () => {
+      apiMock.getAll.mockReturnValue(of(mockProducts));
+      store.loadProducts();
+
+      apiMock.create.mockReturnValue(throwError(() => new Error('Network error')));
+
+      store.createProduct({
+        id: 'fail-001',
+        name: 'Fallido',
+        description: 'No se crea',
+        logo: '',
+        date_release: '2026-01-01',
+        date_revision: '2027-01-01'
+      }).subscribe({
+        error: () => { }
+      });
+
+      expect(store.products().length).toBe(3);
+    });
   });
 
   describe('updateProduct', () => {
@@ -154,6 +174,19 @@ describe('ProductsStore', () => {
       expect(store.products()[1].name).toBe('Cuenta de Ahorros');
       expect(store.products()[2].name).toBe('Crédito Hipotecario');
     });
+
+    it('no debe modificar la lista si update falla', () => {
+      apiMock.getAll.mockReturnValue(of(mockProducts));
+      store.loadProducts();
+
+      apiMock.update.mockReturnValue(throwError(() => new Error('Network error')));
+
+      store.updateProduct('prod-001', { ...mockProducts[0], name: 'Fallido' }).subscribe({
+        error: () => { }
+      });
+
+      expect(store.products()[0].name).toBe('Tarjeta de Crédito');
+    });
   });
 
   describe('deleteProduct', () => {
@@ -167,6 +200,19 @@ describe('ProductsStore', () => {
 
       expect(store.products().length).toBe(2);
       expect(store.products().find(p => p.id === 'prod-001')).toBeUndefined();
+    });
+
+    it('no debe eliminar si delete falla', () => {
+      apiMock.getAll.mockReturnValue(of(mockProducts));
+      store.loadProducts();
+
+      apiMock.delete.mockReturnValue(throwError(() => new Error('Network error')));
+
+      store.deleteProduct('prod-001').subscribe({
+        error: () => { }
+      });
+
+      expect(store.products().length).toBe(3);
     });
   });
 
